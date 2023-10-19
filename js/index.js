@@ -33,7 +33,7 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach((onePep) => {
+  document.querySelectorAll('.pep').forEach((onePep)=>{
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
     } else {
@@ -43,27 +43,60 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((eachMush)=>{
+    if (state.mushrooms) {
+      eachMush.style.visibility = 'visible';
+    } else {
+      eachMush.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((eachPepper)=>{
+    if (state.greenPeppers) {
+      eachPepper.style.visibility = 'visible';
+    } else {
+      eachPepper.style.visibility = 'hidden';
+    }
+  });
+
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  let buttonNode = document.querySelector(".sauce")
+buttonNode.classList.toggle(".sauce-white")
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  let buttonNode = document.querySelector(".crust")
+buttonNode.classList.toggle(".crust-gluten-free")
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  let buttonNodePep = document.querySelector(".panel.controls")
+  buttonNodePep.classList.toggle(".btn.btn-pepperoni.active");
+  let buttonNodeGreen = document.querySelector(".panel.controls")
+  buttonNodePep.classList.toggle(".btn.btn-green-peppers.active")
+  let buttonNodeMush = document.querySelector(".panel.controls")
+  buttonNodePep.classList.toggle(".btn.btn-mushrooms.active")
+  let buttonNodesauce = document.querySelector(".panel.controls")
+  buttonNodePep.classList.toggle(".btn.btn-sauce.active")
+  let buttonNodegluten = document.querySelector(".panel.controls")
+  buttonNodePep.classList.toggle(".btn.btn-crustactive")
+
+let buttonNode = document.querySelector(".panel.controls")
+buttonNode.classList.toggle("active")
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = document.querySelector(".panel");
+  totalPrice.classList.remove("active");
 }
 
 renderEverything();
@@ -75,9 +108,24 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', function 
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector(".btn.btn-mushrooms").addEventListener("click", function () {
+  state.mushrooms = !state.mushrooms;
+  renderMushrooms();
+})
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector(".btn.btn-sauce").addEventListener("click", function(){
+  state.whiteSauce = !state.whiteSauce;
+  renderWhiteSauce();
+})
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector(".btn.btn-green-peppers").addEventListener("click", function(){
+  state.greenPeppers = !state.greenPeppers;
+  renderGreenPeppers();
+})
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector(".btn.btn-crust").addEventListener("click", function(){
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderGlutenFreeCrust();
+})
